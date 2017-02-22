@@ -1,0 +1,8 @@
+BookBundle\Entity\Book:
+    book_{1..10}:
+        title: <title()>
+        writer: <name()>
+        publicationDate: <dateTimeBetween('-10 years', 'now')>
+        edition: <edition()>
+        price: <numberBetween(5, 30)>
+
