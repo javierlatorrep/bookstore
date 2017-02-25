@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use BookBundle\Entity\Book;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,26 @@ class BookController extends Controller
         
         return $this->render('BookBundle::home.html.twig', [
             'books' => $books
+        ]);
+    }
+    
+    /**
+     * @Route("/show/{id}", name="show_book")
+     */
+    public function showAction(Book $book)
+    {
+        return $this->render('BookBundle::show.html.twig', [
+            'book' => $book
+        ]);
+    }
+    
+    /**
+     * @Route("/edit/{id}", name="edit_book")
+     */
+    public function editAction(Book $book)
+    {
+        return $this->render('BookBundle::show.html.twig', [
+            'book' => $book
         ]);
     }
 }

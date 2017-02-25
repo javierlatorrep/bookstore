@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BookStore - {{ book.title }}{% endblock %}
+
+{% block body %}
+    <div class="media">
+        <div class="media-left">
+            <div class="cs-show-media-wrapper">
+                <img
+                    class="cs-show-book media-object img-thumbnail"
+                    src="{{ asset("asset/img/book.png") }}"
+                    alt="{{ book.title }} thumbnail"
+                >
+                <a href="{{ url("edit_book", {'id': book.id}) }}">
+                    <span class="cs-book-edit glyphicon glyphicon-pencil" />
+                </a>
+            </div>
+        </div>
+        <div class="media-body">
+            <dl>
+                <dt>Title: </dt>
+                <dd>{{ book.title }}</dd>
+                <dt>Writer: </dt>
+                <dd>{{ book.writer }}</dd>
+                <dt>Publication date: </dt>
+                <dd>{{ book.publicationDate|date('Y-m-d') }}</dd>
+                <dt>Edition</dt>
+                <dd>{{ book.edition }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

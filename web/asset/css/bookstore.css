@@ -10,3 +10,22 @@
 .cs-book-thumbnail {
     width: 100px;
 }
+
+.cs-show-media-wrapper {
+    position: relative;
+}
+
+.cs-show-book {
+    margin-left: 10px;
+    width: 200px;
+}
+
+.cs-book-edit {
+    border: 2px solid lightskyblue;
+    border-radius: 14px;
+    color: lightslategray;
+    left: 178px;
+    position: absolute;
+    padding: 5px;
+    top: 5px;
+}
