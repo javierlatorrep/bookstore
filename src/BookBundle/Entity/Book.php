@@ -4,10 +4,10 @@ namespace BookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use AppBundle\Repository\BookRepository;
+use BookBundle\Repository\BookRepository;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\BookRepository")
+ * @ORM\Entity(repositoryClass="BookBundle\Repository\BookRepository")
  * @ORM\Table(name="book")
  */
 class Book
@@ -68,7 +68,7 @@ class Book
     }
 
     public function getWriter() {
-        return $this->$writer;
+        return $this->writer;
     }
 
     public function setWriter($writer) {

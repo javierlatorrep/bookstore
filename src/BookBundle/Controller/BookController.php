@@ -15,8 +15,10 @@ class BookController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
+        $books = $em->getRepository('BookBundle:Book')->findAll();
         
-        
-        return $this->render('BookBundle::list.html.twig');
+        return $this->render('BookBundle::list.html.twig', [
+            'books' => $books
+        ]);
     }
 }

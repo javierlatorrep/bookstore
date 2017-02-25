@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Available books</h1>
-    
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,14 +18,14 @@
             {% for book in books %}
                 <tr>
                     <td>{{ book.title }}</td>
-                    <td>{{ book.director }}</td>
+                    <td>{{ book.writer }}</td>
                     <td>{{ book.publicationDate|date('Y-m-d') }}</td>
                     <td>{{ book.edition }}</td>
                     <td>{{ book.price }}</td>
                     <td>
-                        <a href="{{ path('delete_book', {'id': book.id}) }}">
+                        {#<a href="{{ path('delete_book', {'id': book.id}) }}">
                             <span class="glyphicon glyphicon-trash" />
-                        </a>
+                        </a>#}
                     </td>
                 </tr>
             {% endfor %}
