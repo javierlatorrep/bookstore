@@ -5,22 +5,31 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+            <link href="{{ asset("asset/css/bookstore.css") }}" rel="stylesheet" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <header>
             <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{ url('home') }}">
+                        <img class="cs-header-brand" alt="Brand" src="{{ asset("asset/img/book-store.png") }}">
+                    </a>
+                    <div class="navbar-brand">
+                        BookStore
+                    </div>
                     <ul class="nav navbar-nav">
                         <li><a href="#">Add</a></li>
                     </ul>
                 </div>
             </nav>
         </header>
-        
-        {% block body %}{% endblock %}
-        
+
+        <div id="main">
+            {% block body %}{% endblock %}
+        </div>
+
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

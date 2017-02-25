@@ -17,7 +17,7 @@ class BookController extends Controller
         
         $books = $em->getRepository('BookBundle:Book')->findAll();
         
-        return $this->render('BookBundle::list.html.twig', [
+        return $this->render('BookBundle::home.html.twig', [
             'books' => $books
         ]);
     }
