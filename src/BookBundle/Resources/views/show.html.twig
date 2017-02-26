@@ -7,7 +7,7 @@
         <div class="media-left">
             <img
                 class="cs-show-book media-object img-thumbnail"
-                src="{{ asset("asset/img/book.png") }}"
+                src="{{ asset("assets/img/book.png") }}"
                 alt="{{ book.title }} thumbnail"
             >
         </div>
@@ -25,7 +25,7 @@
                 <dd>{{ book.price }} €</dd>
             </dl>
             {% if is_granted('ROLE_USER') %}
-                <a href="{{ url("edit_book", {'id': book.id}) }}">
+                <a href="{{ url("admin_edit_book", {'id': book.id}) }}">
                     <span class="cs-book-edit glyphicon glyphicon-pencil" />
                 </a>
             {% endif %}

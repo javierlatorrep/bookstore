@@ -4,7 +4,11 @@
     {% for book in books %}
         <div class="media">
             <div class="media-left">
-                <img class="cs-book-thumbnail media-object" src="{{ asset("asset/img/book.png") }}" alt="...">
+                <img
+                    class="cs-book-thumbnail media-object"
+                    src="{{ asset("assets/img/book.png") }}"
+                    alt="{{ book.title }} image"
+                >
             </div>
             <div class="media-body">
                 <a href="{{ url("show_book", {'id': book.id}) }}">
