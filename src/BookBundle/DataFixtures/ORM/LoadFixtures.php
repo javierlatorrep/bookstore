@@ -21,26 +21,43 @@ class LoadFixtures implements FixtureInterface
     
     public function title()
     {
-        $movies = [
-            'Watchmen',
-            'Seven',
-            'The lion king',
-            'Up in the air',
-            'Braveheart',
-            'Goldeneye',
-            'Gladiator',
-            'Aurelia',
-            'Pompeya',
-            'Star Wars IV: A new hope',
-            'I robot',
-            'La La Land',
-            'Casino Royale',
-            'Quantum of solace'
+        $books = [
+            'Milk and Honey',
+            'Everything, Everything',
+            'Lincoln in the Bardo',
+            'Norse Mythology',
+            'The Lord of the Rings',
+            'A Tale of Two Cities',
+            'Le Petit Prince',
+            'The Hobbit',
+            'And Then There Were None',
+            'The Da Vinci Code',
+            'El alquimista',
+            'Steps to Christ',
+            'Anne of Green Gables',
+            'Harry Potter and the Deathly Hallows',
+            'La agonía del gran planeta Tierra',
+            'Princesa mecánica',
+            '¿Quién se ha llevado mi queso?',
+            'El viento en los sauces',
+            '1984',
+            'Los juegos del hambre',
+            'Las Nueve Revelaciones',
+            'El Padrino',
+            'Love Story',
+            'Tótem Lobo',
+            'La prostituta feliz',
+            'Tiburón',
+            'Siempre te querré',
+            'El mundo de Sofía',
+            'Sólo para mujeres, o simplemente Mujeres',
+            'Qué esperar cuando se está esperando',
+            'El sanador de caballos'
         ];
         
-        $key = array_rand($movies);
+        $key = array_rand($books);
         
-        return $movies[$key];
+        return $books[$key];
     }
     
     public function edition()

@@ -7,3 +7,9 @@ services:
     user.security.login_form_authenticator:
         class: UserBundle\Security\LoginFormAuthenticator
         autowire: true
+
+    user.doctrine.hash_password_listener:
+        class: UserBundle\Doctrine\HashPasswordListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }

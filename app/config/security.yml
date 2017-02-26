@@ -1,6 +1,8 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+    encoders:
+        UserBundle\Entity\User: bcrypt
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -20,3 +22,6 @@ security:
                     - user.security.login_form_authenticator
             logout:
                 path: /logout
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER }

@@ -24,9 +24,11 @@
                 <dt>Price:</dt>
                 <dd>{{ book.price }} €</dd>
             </dl>
-            <a href="{{ url("edit_book", {'id': book.id}) }}">
-                <span class="cs-book-edit glyphicon glyphicon-pencil" />
-            </a>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ url("edit_book", {'id': book.id}) }}">
+                    <span class="cs-book-edit glyphicon glyphicon-pencil" />
+                </a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

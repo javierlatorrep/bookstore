@@ -1,5 +1,5 @@
 BookBundle\Entity\Book:
-    book_{1..10}:
+    book_{1..20}:
         title: <title()>
         writer: <name()>
         publicationDate: <dateTimeBetween('-10 years', 'now')>
