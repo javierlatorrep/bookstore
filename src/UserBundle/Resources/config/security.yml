@@ -1,0 +1,7 @@
+security:
+    firewalls:
+        main:
+            guard:
+                authenticators:
+                    - app.security.login_form_authenticator
+

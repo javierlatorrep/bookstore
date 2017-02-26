@@ -1,16 +1,16 @@
 <?php
 
-namespace BookBundle\Entity;
+namespace UserBundle\Entity;
 
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use BookBundle\Repository\BookRepository;
 
 /**
- * @ORM\Entity(repositoryClass="BookBundle\Repository\BookRepository")
- * @ORM\Table(name="book")
+ * @ORM\Entity
+ * @ORM\Table(name="user")
  */
-class Book
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -20,82 +20,40 @@ class Book
     private $id;
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", unique=true)
      */
-    private $title;
+    private $email;
 
-    /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     */
-    private $writer;
-
-    /**
-     * @ORM\Column(type="date")
-     * @Assert\NotBlank()
-     */
-    private $publicationDate;
-
-    /**
-     * @ORM\Column(
-     *     type="string",
-     *     nullable=true
-     * )
-     * 
-     */
-    private $edition;
-    
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
-     */
-    private $price;
-
-    public function getId()
+    // needed by the security system
+    public function getUsername()
     {
-        return $this->id;
+        return $this->email;
     }
 
-    public function getTitle()
+    public function getRoles()
     {
-        return $this->title;
+        return ['ROLE_USER'];
     }
 
-    public function setTitle($title)
+    public function getPassword()
     {
-        $this->title = $title;
     }
 
-    public function getWriter() {
-        return $this->writer;
+    public function getSalt()
+    {
     }
 
-    public function setWriter($writer) {
-        $this->writer = $writer;
+    public function eraseCredentials()
+    {
     }
 
-    public function getPublicationDate() {
-        return $this->publicationDate;
+    public function getEmail()
+    {
+        return $this->email;
     }
 
-    public function setPublicationDate($publicationDate) {
-        $this->publicationDate = $publicationDate;
-    }
-
-    public function getEdition() {
-        return $this->edition;
-    }
-
-    public function setEdition($edition) {
-        $this->edition = $edition;
-    }
-
-    public function getPrice() {
-        return $this->price;
-    }
-
-    public function setPrice($price) {
-        $this->price = $price;
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 }

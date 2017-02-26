@@ -1,3 +1,7 @@
-app:
+book:
     resource: "@BookBundle/Controller/"
+    type:     annotation
+
+user:
+    resource: "@UserBundle/Controller/"
     type:     annotation
