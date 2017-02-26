@@ -4,12 +4,12 @@
     {% for book in books %}
         <div class="media">
             <div class="media-left">
-                <a href="{{ url("show_book", {'id': book.id}) }}">
-                    <img class="cs-book-thumbnail media-object" src="{{ asset("asset/img/book.png") }}" alt="...">
-                </a>
+                <img class="cs-book-thumbnail media-object" src="{{ asset("asset/img/book.png") }}" alt="...">
             </div>
             <div class="media-body">
-                <h4 class="media-heading">{{ book.title }}</h4>
+                <a href="{{ url("show_book", {'id': book.id}) }}">
+                    <h4 class="media-heading">{{ book.title }}</h4>
+                </a>
                 <h5 class="media-heading">{{ book.writer }}</h5>
                 <dl>
                     <dt>Publication date: </dt>

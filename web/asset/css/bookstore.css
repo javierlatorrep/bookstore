@@ -1,5 +1,7 @@
 #main {
     margin-top: 70px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .cs-header-brand {
@@ -11,21 +13,20 @@
     width: 100px;
 }
 
-.cs-show-media-wrapper {
+.cs-show-book-wrapper {
     position: relative;
 }
 
 .cs-show-book {
-    margin-left: 10px;
     width: 200px;
 }
 
 .cs-book-edit {
     border: 2px solid lightskyblue;
-    border-radius: 14px;
+    border-radius: 20px;
     color: lightslategray;
-    left: 178px;
     position: absolute;
-    padding: 5px;
-    top: 5px;
+    padding: 7px;
+    right: 5px;
+    font-size: 20px;
 }
