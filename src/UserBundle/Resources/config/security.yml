@@ -1,7 +1,13 @@
 security:
+    providers:
+        our_users:
+            entity: { class: UserBundle\Entity\User, property: email }
+
     firewalls:
         main:
             guard:
                 authenticators:
-                    - app.security.login_form_authenticator
+                    - user.security.login_form_authenticator
 
+            logout:
+                path: /logout

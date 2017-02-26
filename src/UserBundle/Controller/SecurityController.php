@@ -20,13 +20,20 @@ class SecurityController extends Controller
         $form = $this->createForm(LoginFormType::class, [
             '_username' => $lastUsername,
         ]);
-    
+        
         return $this->render(
             'UserBundle::security/login.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'  => $form->createView(),
                 'error' => $error,
             )
         );
+    }
+    
+    /**
+     * @Route("/logout", name="security_logout")
+     */
+    public function logoutAction()
+    {
     }
 }

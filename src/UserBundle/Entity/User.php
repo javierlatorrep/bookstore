@@ -24,27 +24,48 @@ class User implements UserInterface
      */
     private $email;
 
+    /**
+     * The encoded password
+     *
+     * @ORM\Column(type="string")
+     */
+    private $password;
+    
+    /**
+     * A non-persisted field that's used to create the encoded password.
+     *
+     * @var string
+     */
+    private $plainPassword;
+    
     // needed by the security system
     public function getUsername()
     {
         return $this->email;
     }
 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+    
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+    
     public function getRoles()
     {
         return ['ROLE_USER'];
     }
 
-    public function getPassword()
-    {
-    }
-
     public function getSalt()
     {
     }
-
+    
     public function eraseCredentials()
     {
+        $this->plainPassword = null;
     }
 
     public function getEmail()
@@ -55,5 +76,15 @@ class User implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+    
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
     }
 }

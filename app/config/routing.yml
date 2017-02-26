@@ -3,5 +3,4 @@ book:
     type:     annotation
 
 user:
-    resource: "@UserBundle/Controller/"
-    type:     annotation
+    resource: "@UserBundle/Resources/config/routing.yml"
