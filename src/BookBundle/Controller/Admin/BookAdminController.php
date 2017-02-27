@@ -70,4 +70,32 @@ class BookAdminController extends Controller
         
         return new Response(null, 204);
     }
+    
+    /**
+     * @Route("/book/new", name="admin_new_book")
+     */
+    public function newAction(Request $request)
+    {
+        $form = $this->createForm(BookFormType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $book = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($book);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                sprintf('Book created by %s!', $this->getUser()->getEmail())
+            );
+
+            return $this->redirectToRoute('admin_list_books');
+        }
+
+        return $this->render('BookBundle::new.html.twig', [
+            'bookForm' => $form->createView()
+        ]);
+    }
 }

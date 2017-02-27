@@ -2,5 +2,9 @@
     {{ form_widget(bookForm) }}
 
     <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
-    <a href="{{ url("show_book", {'id': id}) }}" class="btn btn-danger">Cancel</a>
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ url('admin_list_books') }}" class="btn btn-danger">Cancel</a>
+    {% else %}
+        <a href="{{ url('show_book', {'id': id}) }}" class="btn btn-danger">Cancel</a>
+    {% endif %}
 {{ form_end(bookForm) }}

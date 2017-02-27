@@ -19,7 +19,8 @@
 
             var self = this;
             swal({
-                title: 'Delete this book?',
+                title: 'Delete book',
+                text: 'Are you sure you want to delete this book?',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 preConfirm: function() {
