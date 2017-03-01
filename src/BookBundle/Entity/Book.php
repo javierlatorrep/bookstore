@@ -26,7 +26,7 @@ class Book
     private $title;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToMany(targetEntity="Writer")
      * @Assert\NotBlank()
      */
     private $writer;
