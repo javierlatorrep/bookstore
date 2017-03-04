@@ -15,8 +15,10 @@
             <dl>
                 <dt>Title:</dt>
                 <dd>{{ book.title }}</dd>
-                <dt>Writer: </dt>
-                <dd>{{ book.writer }}</dd>
+                <dt>Authors: </dt>
+                <dd>
+                    {{ include('BookBundle::author_list.html.twig') }}
+                </dd>
                 <dt>Publication date:</dt>
                 <dd>{{ book.publicationDate|date('Y-m-d') }}</dd>
                 <dt>Edition:</dt>

@@ -3,8 +3,10 @@
 namespace BookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use BookBundle\Repository\BookRepository;
+use BookBundle\Entity\Author;
 
 /**
  * @ORM\Entity(repositoryClass="BookBundle\Repository\BookRepository")
@@ -26,10 +28,10 @@ class Book
     private $title;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Writer")
+     * @ORM\ManyToMany(targetEntity="Author")
      * @Assert\NotBlank()
      */
-    private $writer;
+    private $authors;
 
     /**
      * @ORM\Column(type="date")
@@ -52,6 +54,11 @@ class Book
      */
     private $price;
 
+    public function __construct()
+    {
+        return $this->authors = new ArrayCollection();
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -67,12 +74,19 @@ class Book
         $this->title = $title;
     }
 
-    public function getWriter() {
-        return $this->writer;
+    /**
+     * @return ArrayCollection|Author[]
+     */
+    public function getAuthors() {
+        return $this->authors;
     }
 
-    public function setWriter($writer) {
-        $this->writer = $writer;
+    public function setAuthor(Author $author) {
+        if ($this->authors->contains($author)) {
+            return;
+        }
+        
+        $this->authors[] = $author;
     }
 
     public function getPublicationDate() {

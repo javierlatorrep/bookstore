@@ -1,0 +1,3 @@
+{% for author in book.authors %}
+    {% if loop.index > 1 %}, {% endif %}{{ author.getFullName }}
+{% endfor %}

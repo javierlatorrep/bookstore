@@ -8,8 +8,8 @@
 
 {% block body %}
     <h1>Available books</h1>
-    
-    <a 
+
+    <a
         class="cs-btn-add-book btn btn-success"
         href="{{ url("admin_new_book") }}"
     >
@@ -20,7 +20,7 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Writer</th>
+                <th>Author</th>
                 <th>Publication date</th>
                 <th>Edition</th>
                 <th>Price (€)</th>
@@ -31,7 +31,7 @@
             {% for book in books %}
                 <tr>
                     <td>{{ book.title }}</td>
-                    <td>{{ book.writer }}</td>
+                    <td>{{ book.author }}</td>
                     <td>{{ book.publicationDate|date('Y-m-d') }}</td>
                     <td>{{ book.edition }}</td>
                     <td>{{ book.price }}</td>

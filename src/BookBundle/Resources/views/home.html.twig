@@ -14,7 +14,9 @@
                 <a href="{{ url("show_book", {'id': book.id}) }}">
                     <h4 class="media-heading">{{ book.title }}</h4>
                 </a>
-                <h5 class="media-heading">{{ book.writer }}</h5>
+                <div class="media-heading">
+                    {{ include('BookBundle::author_list.html.twig') }}
+                </div>
                 <dl>
                     <dt>Publication date: </dt>
                     <dd>{{ book.publicationDate|date('Y-m-d') }}</dd>
