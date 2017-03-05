@@ -84,12 +84,12 @@ class Author
         return $this->books;
     }
     
-    public function addAuthorBook(Book $book)
+    public function addBook(Book $book)
     {
         $this->books[] = $book;
     }
 
-    public function removeAuthorBook(Book $book)
+    public function removeBook(Book $book)
     {
         $this->books->removeElement($book);
     }

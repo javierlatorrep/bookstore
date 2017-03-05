@@ -84,28 +84,22 @@ class Book
         return $this->authors;
     }
 
-    // Crec que el nom hauria de ser => addBookAuthor pero sino no carrega
-    // els fixtures (Alice).
-    // Si intentes inserta dona un error:
-    //      Could not determine access type for property "authors".
-    // Quan modifiquem el nom del metode per setAuthors em dona
-    //      Expected argument of type "BookBundle\Entity\Author", "Doctrine\Common\Collections\ArrayCollection" given
-    public function setAuthor(Author $author) {
+    public function addAuthor(Author $author) {
         if ($this->authors->contains($author)) {
             return;
         }
         
         $this->authors[] = $author;
-        $author->addAuthorBook($this);
+        $author->addBook($this);
     }
     
-    public function removeBookAuthor(Author $author) {
+    public function removeAuthor(Author $author) {
         if ($this->authors->contains($author)) {
             return;
         }
         
         $this->authors->removeElement($author);
-        $author->removeAuthorBook($this);
+        $author->removeBook($this);
     }
 
     public function getPublicationDate() {
