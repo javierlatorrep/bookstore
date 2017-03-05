@@ -28,7 +28,10 @@ class Book
     private $title;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Author")
+     * @ORM\ManyToMany(
+     *     targetEntity="Author",
+     *     inversedBy="books"
+     * )
      * @Assert\NotBlank()
      */
     private $authors;
@@ -56,7 +59,7 @@ class Book
 
     public function __construct()
     {
-        return $this->authors = new ArrayCollection();
+        $this->authors = new ArrayCollection();
     }
     
     public function getId()
@@ -81,12 +84,28 @@ class Book
         return $this->authors;
     }
 
+    // Crec que el nom hauria de ser => addBookAuthor pero sino no carrega
+    // els fixtures (Alice).
+    // Si intentes inserta dona un error:
+    //      Could not determine access type for property "authors".
+    // Quan modifiquem el nom del metode per setAuthors em dona
+    //      Expected argument of type "BookBundle\Entity\Author", "Doctrine\Common\Collections\ArrayCollection" given
     public function setAuthor(Author $author) {
         if ($this->authors->contains($author)) {
             return;
         }
         
         $this->authors[] = $author;
+        $author->addAuthorBook($this);
+    }
+    
+    public function removeBookAuthor(Author $author) {
+        if ($this->authors->contains($author)) {
+            return;
+        }
+        
+        $this->authors->removeElement($author);
+        $author->removeAuthorBook($this);
     }
 
     public function getPublicationDate() {

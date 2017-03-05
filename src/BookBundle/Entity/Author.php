@@ -2,6 +2,7 @@
 
 namespace BookBundle\Entity;
 
+use BookBundle\Entity\Book;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -34,7 +35,7 @@ class Author
     /**
      * @ORM\ManyToMany(
      *     targetEntity="Book",
-     *     inversedBy="authors"
+     *     mappedBy="authors"
      * )
      * @ORM\OrderBy({"title" = "ASC"})
      */
@@ -81,5 +82,15 @@ class Author
     public function getBooks()
     {
         return $this->books;
+    }
+    
+    public function addAuthorBook(Book $book)
+    {
+        $this->books[] = $book;
+    }
+
+    public function removeAuthorBook(Book $book)
+    {
+        $this->books->removeElement($book);
     }
 }

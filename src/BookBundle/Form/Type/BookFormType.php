@@ -19,7 +19,7 @@ class BookFormType extends AbstractType
             ->add('authors', EntityType::class, [
                 'class'        => Author::class,
                 'multiple'     => true,
-                'expanded'     => true,
+                'expanded'     => false,
                 'choice_label' => function ($author) {
                     return $author->getFullName();
                 },

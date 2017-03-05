@@ -42,6 +42,8 @@ class BookAdminController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $book = $form->getData();
 
+            var_dump($book);die;
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
             $em->flush();
