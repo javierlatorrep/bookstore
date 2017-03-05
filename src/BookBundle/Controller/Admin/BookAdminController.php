@@ -46,6 +46,10 @@ class BookAdminController extends Controller
             $em->persist($book);
             $em->flush();
 
+            $dispatcher = $this->get('event_dispatcher');
+            $bookCreatedEvent = new BookCreatedEvent($book);
+            $dispatcher->dispatch(BookCreatedEvent::NAME, $bookCreatedEvent);
+            
             $this->addFlash(
                 'success',
                 sprintf('Book created by %s!', $this->getUser()->getEmail())
