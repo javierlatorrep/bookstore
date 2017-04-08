@@ -24,7 +24,6 @@ class BookAdminController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
         $books = $em->getRepository('BookBundle:Book')->findAll();
         
         return $this->render('BookBundle::list.html.twig', [
@@ -43,13 +42,12 @@ class BookAdminController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $book = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($book);
-            $em->flush();
+            $bookManager = $this->get('book.services.model.bookmanager');
+            $bookManager->createBook($book);
 
-//            $dispatcher = $this->get('event_dispatcher');
-//            $bookCreatedEvent = new BookCreatedEvent($book);
-//            $dispatcher->dispatch(BookCreatedEvent::NAME, $bookCreatedEvent);
+            $dispatcher = $this->get('event_dispatcher');
+            $bookCreatedEvent = new BookCreatedEvent($book);
+            $dispatcher->dispatch(BookCreatedEvent::NAME, $bookCreatedEvent);
             
             $this->addFlash(
                 'success',

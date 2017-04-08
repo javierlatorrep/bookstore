@@ -2,7 +2,7 @@
 
 namespace BookBundle\Event;
 
-use AppBundle\Entity\Book;
+use BookBundle\Entity\Book;
 use Symfony\Component\EventDispatcher\Event;
 
 class BookCreatedEvent extends Event 

@@ -13,3 +13,7 @@ services:
         autowire: true
         tags:
             - { name: doctrine.event_subscriber }
+
+    book.services.model.bookmanager:
+        class: BookBundle\Services\Model\BookManager
+        autowire: true

@@ -12,11 +12,11 @@ class BookController extends Controller
     /**
      * @Route("/", name="home")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
         
-        $books = $em->getRepository('BookBundle:Book')->findAll();
+        $books = $entityManager->getRepository('BookBundle:Book')->findAll();
         
         return $this->render('BookBundle::home.html.twig', [
             'books' => $books

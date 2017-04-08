@@ -1,8 +1,8 @@
 <?php
 
-namespace BookBundle\Event;
+namespace BookBundle\EventListener;
 
-use AppBundle\Entity\Book;
+use BookBundle\Entity\Book;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class BookCreatedSubscriber extends EventSubscriberInterface 
