@@ -15,6 +15,19 @@ class BookManager
     
     public function createBook(Book $book) {
         $this->objectManager->persist($book);
+        $this->flushObjectManager();
+    }
+    
+    public function updateBook(Book $book) {
+        $this->flushObjectManager();
+    }
+    
+    public function deleteBook(Book $book) {
+        $this->objectManager->remove($book);
+        $this->flushObjectManager();
+    }
+    
+    private function flushObjectManager() {
         $this->objectManager->flush();
     }
 }

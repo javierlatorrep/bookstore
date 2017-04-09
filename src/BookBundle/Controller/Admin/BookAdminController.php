@@ -21,7 +21,7 @@ class BookAdminController extends Controller
     /**
      * @Route("/list", name="admin_list_books")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
         $books = $em->getRepository('BookBundle:Book')->findAll();
@@ -73,9 +73,9 @@ class BookAdminController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $book = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
-
+            $bookManager = $this->get('book.services.model.bookmanager');
+            $bookManager->updateBook($book);
+            
             $this->addFlash('success', 'Book updated!');
 
             return $this->redirectToRoute('show_book', [
@@ -93,12 +93,11 @@ class BookAdminController extends Controller
      * @Route("/book/{id}", name="admin_delete_book")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Book $book)
+    public function deleteAction(Book $book)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($book);
-        $em->flush();
-        
+        $bookManager = $this->get('book.services.model.bookmanager');
+        $bookManager->deleteBook($book);
+            
         return new Response(null, 204);
     }
 }
