@@ -1,0 +1,4 @@
+services:
+    book.services.model.bookmanager:
+        class: BookBundle\Services\Model\BookManager
+        autowire: true

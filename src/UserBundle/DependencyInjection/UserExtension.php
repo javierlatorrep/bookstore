@@ -1,14 +1,13 @@
 <?php
 
-namespace BookBundle\DependencyInjection;
+namespace UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-
-class BookExtension extends Extension
+class UserExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -18,6 +17,5 @@ class BookExtension extends Extension
         );
         
         $loader->load('services.yml');
-        $loader->load('listeners.yml');
     }
 }
