@@ -10,4 +10,3 @@ BookBundle\Entity\Author:
     author_{1..20}:
         name: <firstName()>
         surnames: <lastName()>
-

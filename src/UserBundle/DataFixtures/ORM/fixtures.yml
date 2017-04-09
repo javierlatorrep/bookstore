@@ -1,4 +1,4 @@
 UserBundle\Entity\User:
     user_{1..10}:
-        email: javierlatorrep+<current()>@gmail.com
+        email: email+<current()>@gmail.com
         plainPassword: p

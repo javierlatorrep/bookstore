@@ -83,6 +83,13 @@ class Book
     public function getAuthors() {
         return $this->authors;
     }
+    
+    /**
+     * Need this method because of fixtures load
+     */
+    public function setAuthor(Author $author) {
+        $this->addAuthor($author);
+    }
 
     public function addAuthor(Author $author) {
         if ($this->authors->contains($author)) {
