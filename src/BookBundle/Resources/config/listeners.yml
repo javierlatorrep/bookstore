@@ -1,0 +1,5 @@
+services:
+    book.eventlistener.bookcreated:
+        class: BookBundle\EventListener\BookCreatedSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
